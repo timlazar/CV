@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Тимур Лазарев</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      :root {
+        --bg: #f5f5f7;
+        --card-bg: #ffffff;
+        --border-soft: #e5e5ea;
+        --text-main: #111111;
+        --text-muted: #6e6e73;
+        --accent: #0071e3;
+        --radius-xl: 22px;
+        --radius-md: 14px;
+        --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.06);
+        --font: -apple-system, system-ui, BlinkMacSystemFont, -sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font);
+        background: var(--bg);
+        color: var(--text-main);
+        display: flex;
+        justify-content: center;
+        padding: 40px 16px;
+        font-size: 13px;
+      }
+
+      .page {
+        width: 100%;
+        max-width: 1040px;
+        background: var(--card-bg);
+        border-radius: 34px;
+        padding: 30px 28px 26px;
+        border: 1px solid var(--border-soft);
+        box-shadow: var(--shadow-soft);
+      }
+
+      header {
+        display: flex;
+        gap: 24px;
+        align-items: center;
+        margin-bottom: 26px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid var(--border-soft);
+      }
+
+      .avatar-wrap {
+        width: 100px;
+        height: 100px;
+        border-radius: 28px;
+        padding: 4px;
+        background: #f5f5f7;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .avatar {
+        width: 100%;
+        height: 100%;
+        border-radius: 22px;
+        background-image: url("https://sun9-30.userapi.com/s/v1/ig2/sg2892ClUgYFLUP6sWEk-MwUs80NIOmFpY2S5ymhzhuL6aohRMhNsK7O2DF-lAJVH20YqTzuEwIHUca75gqxOR1d.jpg?quality=95&as=32x43,48x64,72x96,108x144,160x213,240x320,360x480,480x640,540x720,640x853,720x960,960x1280&from=bu&cs=960x0");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .intro {
+        flex: 1;
+      }
+
+      .name {
+        font-size: 26px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
+      }
+
+      .position {
+        font-size: 13px;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        margin-top: 4px;
+      }
+
+      .summary {
+        margin-top: 9px;
+        max-width: 520px;
+        line-height: 1.6;
+        color: var(--text-muted);
+      }
+
+      .contacts {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        min-width: 210px;
+        font-size: 13px;
+        color: var(--text-muted);
+      }
+
+      .contacts span {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: var(--radius-md);
+        background: #f9f9fb;
+        border: 1px solid #efeff4;
+      }
+
+      .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 999px;
+        background: var(--accent);
+      }
+
+      main {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 18px;
+        margin-top: 16px;
+        font-size: 13px;
+      }
+
+      .block {
+        background: #ffffff;
+        border-radius: var(--radius-xl);
+        padding: 14px 14px 12px;
+        border: 1px solid var(--border-soft);
+      }
+
+      .block h2 {
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.18em;
+        color: #1d1d1f;
+        margin-bottom: 7px;
+        font-weight: 500;
+      }
+
+      .item {
+        margin-bottom: 9px;
+      }
+
+      .item:last-child {
+        margin-bottom: 0;
+      }
+
+      .item-title {
+        font-weight: 500;
+        color: #1d1d1f;
+      }
+
+      .item-sub {
+        margin-top: 2px;
+        color: var(--text-muted);
+      }
+
+      /* Единый стиль для всех списков внутри блоков */
+      .block ul {
+        margin-top: 4px;
+        padding-left: 16px;
+        list-style: disc;
+        color: var(--text-muted);
+      }
+
+      .block ul li {
+        margin-bottom: 2px;
+      }
+
+      /* Soft Skills теперь используют общий стиль списков */
+      .soft-list {
+        padding-left: 16px;
+        list-style: disc;
+        margin-top: 4px;
+        color: var(--text-muted);
+      }
+
+      .personal-text {
+        color: var(--text-muted);
+        margin-top: 2px;
+        line-height: 1.7;
+      }
+
+      .highlight {
+        color: var(--accent);
+        font-weight: 500;
+      }
+
+      .chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 4px;
+      }
+
+      .chip {
+        padding: 4px 9px;
+        border-radius: 999px;
+        border: 1px solid #d2d2d7;
+        background: #f5f5f7;
+        font-size: 13px;
+        color: #1d1d1f;
+        white-space: nowrap;
+      }
+
+      @media (max-width: 800px) {
+        .page {
+          padding: 22px 16px 18px;
+          border-radius: 26px;
+        }
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .contacts {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 6px;
+        }
+        .contacts span {
+          padding-inline: 9px;
+        }
+        main {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <header>
+        <div class="avatar-wrap">
+          <div class="avatar"></div>
+        </div>
+        <div class="intro">
+          <div class="name">Тимур Лазарев</div>
+          <div class="position">Системный аналитик</div>
+          <p class="summary">
+            Системный аналитик с более чем 2 годами опыта в различных проектах
+          </p>
+        </div>
+        <div class="contacts">
+          <span
+            ><div class="dot"></div>
+            Ростов-на-Дону, Россия</span
+          >
+          <span
+            ><div class="dot"></div>
+            +7 952 419 65 52</span
+          >
+          <span
+            ><div class="dot"></div>
+            timur27011999@gmail.com</span
+          >
+          <span
+            ><div class="dot"></div>
+            github.com/timlazar</span
+          >
+        </div>
+      </header>
+
+      <main>
+        <!-- LEFT COLUMN -->
+        <section class="block">
+          <h2>Образование</h2>
+          <div class="item">
+            <div class="item-title">
+              Бакалавр: Государственное и муниципальное управление (38.03.04)
+            </div>
+            <div class="item-sub">
+              Южно-Российский институт управления — филиал РАНХиГС,
+              Ростов-на-Дону · 2016–2020
+            </div>
+            <ul>
+              <li>
+                Фокус на системе органов власти, административных регламентах,
+                госфинансах и стратегическом управлении.
+              </li>
+              <li>
+                Опыт работы с нормативкой и формальными процедурами как база для
+                системного анализа, работы с требованиями, согласований и
+                регламентов в IT-проектах.
+              </li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-title">Дополнительное образование</div>
+            <div class="item-sub">SQL-EX Practice Course · 2022</div>
+            <ul>
+              <li>
+                Продвинутые SQL-запросы, JOIN, агрегаты, оконные функции,
+                оптимизация запросов — уверенная работа с данными.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>Soft Skills</h2>
+          <ul class="soft-list">
+            <li>
+              Эффективная коммуникация с бизнес-стейкхолдерами и техническими
+              командами
+            </li>
+            <li>
+              Сбор, формализация и трассировка требований (Business / System
+              Requirements, Use Case, User Story)
+            </li>
+            <li>
+              Системное мышление, декомпозиция задач, приоритизация и управление
+              бэклогом
+            </li>
+            <li>
+              Моделирование процессов (BPMN, UML), описание AS-IS / TO-BE,
+              проведение GAP-анализа
+            </li>
+            <li>
+              Подготовка формальной документации: спецификации, схемы
+              интеграций, регламенты
+            </li>
+            <li>
+              Фасилитация встреч, согласование решений, управление ожиданиями и
+              интересами участников
+            </li>
+            <li>
+              Data-driven подход к оценке изменений и влияния на смежные системы
+            </li>
+            <li>
+              Работа в условиях неопределённости и жёстких дедлайнов без
+              просадки по качеству
+            </li>
+          </ul>
+        </section>
+
+        <section class="block">
+          <h2>Опыт работы</h2>
+
+          <div class="item">
+            <div class="item-title">
+              Системный аналитик · Финтех / цифровые сервисы
+            </div>
+            <div class="item-sub">2023 – 2024</div>
+            <ul>
+              <li>
+                Сбор и формализация требований от бизнеса для web- и мобильных
+                продуктов.
+              </li>
+              <li>
+                Описание API-интеграций между внутренними системами и внешними
+                сервисами.
+              </li>
+              <li>
+                Моделирование процессов в BPMN, подготовка схем AS-IS / TO-BE и
+                GAP-анализа.
+              </li>
+              <li>
+                Подготовка спецификаций, технических заданий и документации для
+                команды разработки.
+              </li>
+              <li>
+                Участие в приемке релизов, проверка соответствия реализованного
+                функционала требованиям.
+              </li>
+            </ul>
+          </div>
+
+          <div class="item">
+            <div class="item-title">
+              Бизнес / системный аналитик · Банковские продукты
+            </div>
+            <div class="item-sub">2024 – 2025</div>
+            <ul>
+              <li>
+                Анализ и оптимизация процессов выдачи, сопровождения и доставки
+                банковских карт и услуг.
+              </li>
+              <li>
+                Описания регламентов, пользовательских сценариев, кейсов
+                обработки заявок.
+              </li>
+              <li>
+                Взаимодействие с ИТ-командой, формирование требований к
+                доработкам внутренних систем.
+              </li>
+              <li>
+                Мониторинг метрик процессов, выявление узких мест и предложение
+                улучшений.
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="block">
+          <h2>Hard Skills</h2>
+          <div class="chips">
+            <div class="chip">REST API</div>
+            <div class="chip">UML</div>
+            <div class="chip">Макеты экранных форм</div>
+            <div class="chip">Figma</div>
+            <div class="chip">Postman</div>
+            <div class="chip">BPMN</div>
+            <div class="chip">Декомпозиция требований</div>
+            <div class="chip">Swagger</div>
+            <div class="chip">Проектирование БД</div>
+            <div class="chip">PostgreSQL</div>
+            <div class="chip">MySQL</div>
+            <div class="chip">Use Cases</div>
+            <div class="chip">User Stories</div>
+            <div class="chip">Разработка ТЗ</div>
+            <div class="chip">ER-моделирование</div>
+            <div class="chip">SOAP</div>
+            <div class="chip">Постановка задач разработчикам</div>
+            <div class="chip">JSON</div>
+            <div class="chip">XML</div>
+            <div class="chip">Jira</div>
+            <div class="chip">Confluence</div>
+            <div class="chip">Разработка инструкций</div>
+            <div class="chip">Демонстрация результатов</div>
+            <div class="chip">Микросервисная архитектура</div>
+            <div class="chip">draw.io</div>
+            <div class="chip">Тестирование функционала</div>
+            <div class="chip">Описание багов</div>
+          </div>
+        </section>
+
+        <!-- FULL-WIDTH PERSONAL STATEMENT -->
+        <section class="block" style="grid-column: 1 / -1">
+          <h2>Personal Statement</h2>
+          <p class="personal-text">
+            Как системный аналитик я помогаю превращать разрозненные ожидания
+            бизнеса и сложные процессы в прозрачные, формализованные решения.
+            Фокусируюсь на точной проработке требований, понятных моделях,
+            согласованных интеграциях и предсказуемом результате для продукта и
+            команды.
+          </p>
+          <p class="personal-text">
+            Для меня важны <span class="highlight">ясность</span>,
+            <span class="highlight">ответственность</span> и
+            <span class="highlight">постоянное улучшение</span>. Ценю команды,
+            где честная обратная связь и документация являются частью процесса,
+            решения принимаются на основе данных, а пользователи реально видят
+            эффект от внедрённых изменений.
+          </p>
+        </section>
+      </main>
+    </div>
+  </body>
+</html>
